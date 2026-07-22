@@ -2,20 +2,31 @@
 set -euo pipefail
 
 readonly source_repo="homeant/agent-server-manager"
-readonly api_url="https://api.github.com/repos/${source_repo}/releases/latest"
+readonly tag="${ASVC_TAG:-}"
+
+if [[ -z "$tag" ]]; then
+  echo "ASVC_TAG is required (for example: v0.4.0)" >&2
+  exit 1
+fi
+if [[ ! "$tag" =~ ^v[0-9]+\.[0-9]+\.[0-9]+([.-][0-9A-Za-z.-]+)?$ ]]; then
+  echo "invalid release tag: $tag" >&2
+  exit 1
+fi
+
+readonly api_url="https://api.github.com/repos/${source_repo}/releases/tags/${tag}"
 
 release_json=$(curl --fail --silent --show-error --location \
   --header "Accept: application/vnd.github+json" \
   --header "User-Agent: homeant-homebrew-tap" \
   "$api_url")
 
-tag=$(jq --raw-output '.tag_name' <<<"$release_json")
+release_tag=$(jq --raw-output '.tag_name' <<<"$release_json")
 checksum_url=$(jq --raw-output \
   '.assets[] | select(.name == "SHA256SUMS") | .browser_download_url' \
   <<<"$release_json")
 
-if [[ ! "$tag" =~ ^v[0-9]+\.[0-9]+\.[0-9]+([.-][0-9A-Za-z.-]+)?$ ]]; then
-  echo "invalid release tag: $tag" >&2
+if [[ "$release_tag" != "$tag" ]]; then
+  echo "release tag mismatch: requested $tag, received $release_tag" >&2
   exit 1
 fi
 if [[ -z "$checksum_url" || "$checksum_url" == "null" ]]; then

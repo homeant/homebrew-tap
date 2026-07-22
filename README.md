@@ -28,6 +28,6 @@ brew upgrade asvc
 The `asvc` source, release notes, and platform archives live in
 [homeant/agent-server-manager](https://github.com/homeant/agent-server-manager).
 
-The tap checks that repository's latest GitHub Release every hour and updates the
-formula from its published `SHA256SUMS`. Maintainers can also run the
-`Update asvc formula` workflow manually.
+When a maintainer pushes a `v*` tag to the source repository, its release workflow
+builds and publishes the release first, then updates this formula from the
+release's `SHA256SUMS`.
