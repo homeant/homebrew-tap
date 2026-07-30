@@ -1,20 +1,20 @@
 class Asvc < Formula
   desc "Shared local development service manager for humans and agents"
   homepage "https://github.com/homeant/agent-server-manager"
-  version "0.4.3"
+  version "0.4.4"
   license "MIT"
 
   depends_on :macos
 
   on_macos do
     on_arm do
-      url "https://github.com/homeant/agent-server-manager/releases/download/v0.4.3/asvc-v0.4.3-darwin-arm64.tar.gz"
-      sha256 "51fc302c7f8352cfc88d28da0e19443bc8b3f1a0a0d48dada42b44b767eec1bf"
+      url "https://github.com/homeant/agent-server-manager/releases/download/v0.4.4/asvc-v0.4.4-darwin-arm64.tar.gz"
+      sha256 "e2febe41ff696c680592051d872d49c2a713e38035e2501e210a4c0c614439bd"
     end
 
     on_intel do
-      url "https://github.com/homeant/agent-server-manager/releases/download/v0.4.3/asvc-v0.4.3-darwin-x64.tar.gz"
-      sha256 "af8cc4eb57754f3b7cd7e47e9b13bc75a3454f6bac95dad72fcc677b708468c3"
+      url "https://github.com/homeant/agent-server-manager/releases/download/v0.4.4/asvc-v0.4.4-darwin-x64.tar.gz"
+      sha256 "e427640e08744ee4456d3795e28f9c463cf4f5763f745fd60fcc79104a3dec05"
     end
   end
 
