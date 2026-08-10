@@ -9,12 +9,12 @@ class Asvc < Formula
   on_macos do
     on_arm do
       url "https://github.com/homeant/agent-server-manager/releases/download/v0.4.5/asvc-v0.4.5-darwin-arm64.tar.gz"
-      sha256 "808099af6d708b4b324a35037ee20594d79f5660fb89b297e64298a4d0b6f3f5"
+      sha256 "3b4521a899009c9b848e62126943c68ba4f71665251f9d766bdea4fac39d0ed8"
     end
 
     on_intel do
       url "https://github.com/homeant/agent-server-manager/releases/download/v0.4.5/asvc-v0.4.5-darwin-x64.tar.gz"
-      sha256 "d95e7c2f4f3b443a7884956f153652645c7a8bc6d4ef9ef68364a7b1223b3efb"
+      sha256 "3f4381915f6cc4d766b7abdd5fc75d66358aece8ece688bbca1aa66a5c8e50bc"
     end
   end
 
